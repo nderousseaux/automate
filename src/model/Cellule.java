@@ -4,6 +4,13 @@ public class Cellule {
 
     public Automate _parent;
     public Grille _terrain;
-    public Integer[2] _position;
+    public int _position[];
+
+
+    public Cellule(Automate parent, Grille terrain, int position[]){
+        _parent = parent;
+        _terrain = terrain;
+        _position = position;
+    }
 
 }

@@ -5,7 +5,15 @@ import java.util.ArrayList;
 public class Automate {
 
     public ArrayList<Cellule> _cellules;
-    public Algo _algoExpension;
+    public AlgorithmeExpension _algoExpension;
+
+    public Automate(){
+    }
+
+    public void expense(){
+        _algoExpension.expense(this);
+    }
+
 
 
 
