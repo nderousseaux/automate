@@ -13,4 +13,7 @@ public class Cellule {
         _position = position;
     }
 
+    public int[] getPosition() {
+        return this._position;
+    }
 }
