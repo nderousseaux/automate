@@ -20,4 +20,7 @@ public class Cellule {
         _terrain._listeDesCellules.remove(this);
     }
 
+    public int[] getPosition() {
+        return this._position;
+    }
 }
