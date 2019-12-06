@@ -4,6 +4,7 @@ import model.Grille;
 import model.Temp;
 
 
+import javax.sound.sampled.spi.AudioFileReader;
 import java.util.ArrayList;
 
 public class Main {
@@ -21,28 +22,27 @@ public class Main {
 
         //On crée les cellules
         int pos1[] = {1,1};
-        Cellule c1 = new Cellule(aut1, g, pos1); g._listeDesCellules.add(c1);
+        Cellule c1 = new Cellule(aut1, g, pos1);
         int pos2[] = {0,1};
-        Cellule c2 = new Cellule(aut1, g, pos2); g._listeDesCellules.add(c2);
+        Cellule c2 = new Cellule(aut1, g, pos2);
         int pos3[] = {0,2};
-        Cellule c3 = new Cellule(aut1, g, pos3); g._listeDesCellules.add(c3);
+        Cellule c3 = new Cellule(aut1, g, pos3);
 
         int pos4[] = {2,1};
-        Cellule c4 = new Cellule(aut2, g, pos4); g._listeDesCellules.add(c4);
+        Cellule c4 = new Cellule(aut2, g, pos4);
         int pos5[] = {2,2};
-        Cellule c5 = new Cellule(aut2, g, pos5); g._listeDesCellules.add(c5);
+        Cellule c5 = new Cellule(aut2, g, pos5);
         int pos6[] = {3,2};
-        Cellule c6 = new Cellule(aut2, g, pos6); g._listeDesCellules.add(c6);
+        Cellule c6 = new Cellule(aut2, g, pos6);
 
         //On crée le temps
-        Temp c = new Temp(g);
-
+        Temp c = new Temp(g, 10);
         System.out.println(g);
-        c.tour();
-        System.out.println(g);
-        c.tour();
-        System.out.println(g);
+        while (c.fin() == null){
+            c.tour();
+            System.out.println(g);
+        }
 
-
+        System.out.println(c.fin());
     }
 }

@@ -11,6 +11,13 @@ public class Cellule {
         _parent = parent;
         _terrain = terrain;
         _position = position;
+        parent._cellules.add(this);
+        terrain._listeDesCellules.add(this);
+    }
+
+    public void meurt(){
+        _parent._cellules.remove(this);
+        _terrain._listeDesCellules.remove(this);
     }
 
 }

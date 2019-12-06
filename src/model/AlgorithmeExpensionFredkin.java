@@ -2,7 +2,7 @@ package model;
 
 import java.util.ArrayList;
 
-public class AlgorithmeExpensionGOL implements AlgorithmeExpension {
+public class AlgorithmeExpensionFredkin implements AlgorithmeExpension {
 
     @Override
     public void expense(Automate automate) {
@@ -18,6 +18,8 @@ public class AlgorithmeExpensionGOL implements AlgorithmeExpension {
 
                 //On ne s'insteresse qu'aux notres, on supprime les cellules n'appartenant pas à l'automate
                 cellulesEntourage.removeIf(n->(n._parent != automate));
+
+                //On ne récupère que celles des nord/sud/est/ouest.
 
                 //Une cellule morte qui possède exactement 3 cellules vivantes nai
                 if(!automate.hasCellule(position) && cellulesEntourage.size() == 3){

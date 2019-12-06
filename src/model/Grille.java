@@ -22,6 +22,10 @@ public class Grille {
         _listeDesCellules = listeDesCellules;
     }
 
+    //Retourne toutes les cellules entourant la cellule indiquée par la position, dans l'ordre :
+    //exemple : 1 2 3       avec 5 la cellule dont on veut l'entourage : arrayListRetour : 1,2,3,4,6,7,8,9
+    //          4 5 6
+    //          7 8 9
     public ArrayList<Cellule> entourage(int position[]){
         //TODO:Un pattern stratégie, qui permet de renvoyer l'entourage en fonction de l'algorithme d'expension.
     }
