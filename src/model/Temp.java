@@ -17,7 +17,7 @@ public class Temp {
 
     public void tour(){
         _nbTour+=1;
-        ArrayList<Automate> listAutomates = _grille.automatesEnJeu();
+        ArrayList<Automate> listAutomates = _grille.getAutomatesEnJeu();
 
         //On étand chaque automate
         for (Automate automate:listAutomates) {
@@ -31,13 +31,13 @@ public class Temp {
 
     public void combat(){
         //On vérifie qu'aucune cellule ne se supperpose, si c'est le cas, combat
-        for(int y=0; y<= _grille._taille[1]; y++) {
-            for(int x=0; x<= _grille._taille[0]; x++){
+        for(int y=0; y<= _grille.getTaille()[1]; y++) {
+            for(int x=0; x<= _grille.getTaille()[0]; x++){
                 int position[]= {x,y};
 
                 //On liste toutes les cellules sur la position
                 ArrayList<Cellule> cellulesSurLaPosition = new ArrayList<Cellule>();
-                for(Cellule cellule:_grille._listeDesCellules){
+                for(Cellule cellule:_grille.getListeCellules()){
                     if(cellule._position[0] == position[0] && cellule._position[1] == position[1]){
                         cellulesSurLaPosition.add(cellule);
                     }
@@ -66,14 +66,14 @@ public class Temp {
     }
 
     public ArrayList<Automate>fin(){
-        ArrayList<Automate> listAutomates = _grille.automatesEnJeu();
+        ArrayList<Automate> listAutomates = _grille.getAutomatesEnJeu();
 
         //si personne n'a gagné, null
         ArrayList<Automate> gagnant = null;
 
 
         //Si il ne reste plus qu'un automate en vie
-        ArrayList<Automate> listeAutomateTemporaire = _grille.automatesEnJeu();
+        ArrayList<Automate> listeAutomateTemporaire = _grille.getAutomatesEnJeu();
         listeAutomateTemporaire.removeIf(a->(a._cellules.size() ==0));
         if(listAutomates.size() == 0){
             gagnant = new ArrayList<>();

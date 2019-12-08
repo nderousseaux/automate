@@ -12,12 +12,12 @@ public class Cellule {
         _terrain = terrain;
         _position = position;
         parent._cellules.add(this);
-        terrain._listeDesCellules.add(this);
+        terrain.getListeCellules().add(this);
     }
 
     public void meurt(){
         _parent._cellules.remove(this);
-        _terrain._listeDesCellules.remove(this);
+        _terrain.getListeCellules().remove(this);
     }
 
     public int[] getPosition() {
