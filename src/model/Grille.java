@@ -16,7 +16,7 @@ public class Grille {
     //region Attributs
     private int[] _taille;
     private ArrayList<Cellule> _listeDesCellules;
-    private MethodeExtension _methodeExtension;
+    private AlgorithmeExtension _algorithmeExtension;
     //endregion
 
     //region Constructeur
@@ -25,12 +25,12 @@ public class Grille {
      *
      * @param taille Taille de la grille
      * @param listeDesCellules Liste de cellules vivantes sur la grille
-     * @param methodeExtension La méthode d'extension de la grille
+     * @param algorithmeExtension La méthode d'extension de la grille
      *
      * @throws IllegalArgumentException Si la longueur du tableau "taille" n'est pas de 2.
      * @throws IndexOutOfBoundsException Si la taille est négative
      */
-    public Grille(int[] taille, ArrayList<Cellule> listeDesCellules, MethodeExtension methodeExtension){
+    public Grille(int[] taille, ArrayList<Cellule> listeDesCellules, AlgorithmeExtension algorithmeExtension){
         if(taille.length != 2){
             throw new IllegalArgumentException("La grille n'est pas de dimension deux.");
         }
@@ -40,7 +40,7 @@ public class Grille {
 
         _taille = taille;
         _listeDesCellules = listeDesCellules;
-        _methodeExtension = methodeExtension;
+        _algorithmeExtension = algorithmeExtension;
     }
     //endregion
 
@@ -99,7 +99,7 @@ public class Grille {
         if(position.length != 2){
             throw new IllegalArgumentException("La position demandé ne s'inscrit pas dans un espace de dimension 2.");
         }
-        return _methodeExtension.voisinage(this, position);
+        return _algorithmeExtension.getCellules(this, position);
     }
 
     /**

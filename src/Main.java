@@ -1,8 +1,6 @@
-import javafx.scene.control.Cell;
 import model.*;
 
 
-import javax.sound.sampled.spi.AudioFileReader;
 import java.util.ArrayList;
 
 public class Main {
@@ -12,7 +10,7 @@ public class Main {
         //On crée la grille
         int taille[] = {5,5};
         ArrayList<Cellule> listeDesCellules = new ArrayList<>();
-        Grille g = new Grille(taille, listeDesCellules, new ExtensionRepet());
+        Grille g = new Grille(taille, listeDesCellules, new AlgorithmeExtensionRepetition());
 
         //On crée les automates
         Automate aut1 = new Automate();
