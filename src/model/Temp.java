@@ -4,17 +4,19 @@ import java.util.ArrayList;
 //TODO: Dans le model ou le controller ?
 public class Temp {
 
-    int nbTour = 0;
-    int nbTourMax;
+    int _nbTour;
+    int _nbTourMax;
     Grille _grille;
 
     public Temp(Grille grille, int nbTourMax){
         _grille = grille;
-        nbTourMax=nbTourMax;
+        _nbTourMax=nbTourMax;
+
+        combat();
     }
 
     public void tour(){
-        nbTour+=1;
+        _nbTour+=1;
         ArrayList<Automate> listAutomates = _grille.automatesEnJeu();
 
         //On étand chaque automate
@@ -24,8 +26,13 @@ public class Temp {
         }
 
         //On vérifie qu'aucune cellule ne se supperpose, si c'est le cas, combat
+        combat();
+    }
+
+    public void combat(){
+        //On vérifie qu'aucune cellule ne se supperpose, si c'est le cas, combat
         for(int y=0; y<= _grille._taille[1]; y++) {
-            for(int x=0; x<= _grille._taille[0]; y++){
+            for(int x=0; x<= _grille._taille[0]; x++){
                 int position[]= {x,y};
 
                 //On liste toutes les cellules sur la position
@@ -40,7 +47,7 @@ public class Temp {
 
                 //Si le nombre de cellule est supérieur 1, combat.
                 if(cellulesSurLaPosition.size() >1){
-                    int indexVivante = (int)(Math.random() * cellulesSurLaPosition.size()-1);
+                    int indexVivante = (int)(Math.random() * cellulesSurLaPosition.size());
                     Cellule celluleSurvivante = cellulesSurLaPosition.get(indexVivante);
                     for (Cellule cellule:cellulesSurLaPosition) {
                         if(cellule != celluleSurvivante){
@@ -76,7 +83,7 @@ public class Temp {
             gagnant.add(listeAutomateTemporaire.get(0));
         }
         //Si les tours sont finit, l'automate avec le plus de cellule gagne
-        else if(nbTour >=nbTourMax){
+        else if(_nbTour >=_nbTourMax){
             gagnant = new ArrayList<>();
             int nbMax = listAutomates.get(0)._cellules.size();
             for (Automate auto : listAutomates) {

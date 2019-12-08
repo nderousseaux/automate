@@ -4,8 +4,8 @@ import java.util.ArrayList;
 
 public class Automate {
 
-    public ArrayList<Cellule> _cellules;
-    public AlgorithmeExpension _algoExpension;
+    public ArrayList<Cellule> _cellules = new ArrayList<>();
+    public AlgorithmeExpension _algoExpension = new AlgorithmeExpensionGOL();
 
     public Automate(){
     }

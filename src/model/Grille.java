@@ -1,13 +1,12 @@
 package model;
 
-import java.lang.invoke.CallSite;
 import java.util.ArrayList;
 
 
 public class Grille {
     // Attribut contenant la méthode d'extension de la grille (pour obtenir le voisinage)
     // La méthode par défaut est celle de la Répétition
-    private MethodeExtension _methodeExtension = new ExtensionRepetition();
+    private MethodeExtension _methodeExtension = new ExtensionRepet();
 
     public ArrayList<model.Automate> automatesEnJeu(){
         ArrayList<Automate> listeDesAutomates = new ArrayList<>();
@@ -31,25 +30,11 @@ public class Grille {
         this._methodeExtension = me;
     }
 
-    // Méthode pour récupérer le voisinage d'une cellule à partir de sa position
-    public ArrayList<Cellule> voisinage(int position[]) {
-        // Appel à la méthode de la stratégie de la grille (Pattern Strategie)
-        return _methodeExtension.voisinage(this, position);
-    }
+    // Méthode qui renvoie les cellule présente à une position donnée
+    public ArrayList<Cellule> getCellule(int[] pos) {
+        return _methodeExtension.voisinage(this, pos);
 
-    // Méthode qui renvoie la cellule présente à une position donnée
-    public Cellule getCellule(int[] pos) {
-        Cellule res = null;
-        int c = 0;
-        while(res == null && c < _listeDesCellules.size()) {
-            int x = _listeDesCellules.get(c).getPosition()[0];
-            int y = _listeDesCellules.get(c).getPosition()[1];
-            if(x == pos[0] && y == pos[1]) {
-                res = _listeDesCellules.get(c);
-            }
-            c++;
-        }
-        return res;
+
     }
 
     public int[] getTaille() {
@@ -63,8 +48,8 @@ public class Grille {
     @Override
     public String toString() {
         String retour = "";
-        for(int y = 0; y<_taille[0]; y++){
-            for(int x = 0; x<_taille[1]; x++){
+        for(int y = 0; y<_taille[1]; y++){
+            for(int x = 0; x<_taille[0]; x++){
 
                 //On regarde si il existe une cellule dans la case
                 Boolean trouve = false;
