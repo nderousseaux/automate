@@ -1,4 +1,5 @@
-import model.*;
+package model;
+
 
 
 import java.util.ArrayList;
@@ -27,7 +28,7 @@ public class Main {
 
 
         //On crée le temps
-        Temp c = new Temp(g, 10);
+        Clock c = new Clock(g, 10);
         System.out.println(g);
         while (c.fin() == null){
             c.tour();

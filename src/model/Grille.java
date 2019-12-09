@@ -30,7 +30,7 @@ public class Grille {
      * @throws IllegalArgumentException Si la longueur du tableau "taille" n'est pas de 2.
      * @throws IndexOutOfBoundsException Si la taille est négative
      */
-    public Grille(int[] taille, ArrayList<Cellule> listeDesCellules, AlgorithmeExtension algorithmeExtension){
+    Grille(int[] taille, ArrayList<Cellule> listeDesCellules, AlgorithmeExtension algorithmeExtension){
         if(taille.length != 2){
             throw new IllegalArgumentException("La grille n'est pas de dimension deux.");
         }
@@ -78,11 +78,30 @@ public class Grille {
 
         //Pour chaque cellule, si l'automate n'est pas encore aujouté dans la liste on l'ajoute.
         for(Cellule c:_listeDesCellules){
-            if(!listeDesAutomates.contains(c._parent)){
-                listeDesAutomates.add(c._parent);
+            if(!listeDesAutomates.contains(c.getParent())){
+                listeDesAutomates.add(c.getParent());
             }
         }
         return listeDesAutomates;
+    }
+
+    /**
+     * Méthode pour ajouter une cellule à la liste des cellules
+     *
+     * @param cellule Cellule à ajouter sur le terrain.
+     *
+     * @throws IllegalArgumentException Si la longueur du tableau "position" n'est pas de 2.
+     * @throws IndexOutOfBoundsException Si la taille est négative ou sort des bornes de la grille
+     *
+     */
+    void addCellule(Cellule cellule){
+        if(cellule.getPosition().length != 2){
+            throw new IllegalArgumentException("La position demandé ne s'inscrit pas dans un espace de dimension 2.");
+        }
+        else if(cellule.getPosition()[0]<0 || cellule.getPosition()[0]>= this._taille[0] || cellule.getPosition()[1]<0 || cellule.getPosition()[1]>= _taille[1]){
+            throw new IndexOutOfBoundsException("La position indiquée sort des bornes de la grille");
+        }
+        _listeDesCellules.add(cellule);
     }
 
     /**
@@ -120,7 +139,7 @@ public class Grille {
                 //On récupère la première cellule trouvée dans cette case
                 Cellule trouve = null;
                 for (Cellule cellule: _listeDesCellules) {
-                    if((cellule._position[0] == x) && (cellule._position[1] == y)){
+                    if((cellule.getPosition()[0] == x) && (cellule.getPosition()[1] == y)){
                         trouve = cellule;
                         break;
                     }
@@ -128,7 +147,7 @@ public class Grille {
 
                 //Si il existe une cellule, on inscrit le numéro de l'automate
                 if(trouve != null){
-                    int numeroDeLautomate = listeDesAutomates.indexOf(trouve._parent);
+                    int numeroDeLautomate = listeDesAutomates.indexOf(trouve.getParent());
                     chaineRetour += "| "+ numeroDeLautomate+"  ";
                 }
                 //Sinon on inscrit rien.
