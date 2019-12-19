@@ -1,13 +1,12 @@
 package model;
 
 
-
+import view.Fenetre;
 import java.util.ArrayList;
 
 public class Main {
 
-    public static void main(String[] args) {
-
+    public static void main(String[] args)  {
         //On crée la grille
         int taille[] = {5,5};
         ArrayList<Cellule> listeDesCellules = new ArrayList<>();
@@ -25,9 +24,10 @@ public class Main {
         int pos4[] = {1,2};
         Cellule c4 = new Cellule(autr, g, pos4);
 
+        // Appel à la vue
+        Fenetre f = new Fenetre(taille);
 
-
-        //On crée le temps
+        // On crée le temps
         Clock c = new Clock(g, 10);
         System.out.println(g);
         while (c.fin() == null){
