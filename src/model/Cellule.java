@@ -9,7 +9,7 @@ package model;
  *  - Son état
  *
  */
- class Cellule {
+public class Cellule {
 
     //region Attributs
     private Automate _parent;
@@ -30,7 +30,7 @@ package model;
      * @throws IndexOutOfBoundsException Si la taille est négative ou sort des bornes de la grille
      *
      */
-     Cellule(Automate parent, Grille terrain, int[] position){
+    public Cellule(Automate parent, Grille terrain, int[] position){
         if(position.length != 2){
             throw new IllegalArgumentException("La position demandé ne s'inscrit pas dans un espace de dimension 2.");
         }
@@ -75,7 +75,7 @@ package model;
      * @return La position de la cellule sur le terrain, sous forme d'un tableau d'entier.
      *
      */
-     int[] getPosition() {
+    public int[] getPosition() {
         return this._position;
     }
     //endregion
@@ -85,7 +85,7 @@ package model;
      * Fonction qui déclare la mort d'une cellule.
      * Cela revient à la supprimer de son parent et du terrain.
      */
-     void meurt(){
+    public void meurt(){
         //La cellule est supprimé de son parrent et du terrain
         _parent.getCellules().remove(this);
         _terrain.getListeCellules().remove(this);

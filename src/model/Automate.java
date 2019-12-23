@@ -9,19 +9,24 @@ import java.util.ArrayList;
  *  - Sa méthode d'évolution
  *
  */
- class Automate {
+public class Automate {
 
     //region Attributs
     private ArrayList<Cellule> _cellules = new ArrayList<>();
-    private AlgorithmeEvolution _algoExpension = new AlgorithmeEvolutionGOL();
+    private AlgorithmeEvolution _algoEvolution;
+    private String _name;
     //endregion
 
     //region Constructeur
     /**
      * Constructeur de la classe Automate.
      *
+     * @param algorithmeEvolution Algorithme d'évolution de l'automate.
+     * @param name Nom de l'automate
+     *
      */
-    Automate(){
+    public Automate(AlgorithmeEvolution algorithmeEvolution, String name){
+        _algoEvolution = algorithmeEvolution;_name = name;
     }
     //endregion
 
@@ -30,7 +35,7 @@ import java.util.ArrayList;
      * Getteur qui renvoie la liste des cellules
      *
      */
-     ArrayList<Cellule> getCellules(){
+    public ArrayList<Cellule> getCellules(){
         return _cellules;
     }
 
@@ -62,6 +67,30 @@ import java.util.ArrayList;
 
         return res;
     }
+
+    /**
+     * Getter qui renvoie l'alogrithme d'évolution de l'automate
+     *
+     */
+    public AlgorithmeEvolution getAlgoEvolution() {
+        return _algoEvolution;
+    }
+
+    /**
+     * Getter qui renvoie le nom de l'automate
+     *
+     */
+    public String getName() {
+        return _name;
+    }
+
+    /**
+     * Setter du nom de l'automate
+     *
+     */
+    public void setName(String name) {
+        this._name = name;
+    }
     //endregion
 
     //region Méthodes d'instances
@@ -70,8 +99,8 @@ import java.util.ArrayList;
      * La méthode sera appelé à chaque tour.
      *
      */
-     void evolution(){
-        _algoExpension.evolution(this);
+    public void evolution(){
+        _algoEvolution.evolution(this);
     }
 
     /**

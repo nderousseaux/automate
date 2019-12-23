@@ -2,7 +2,6 @@ package model;
 
 import java.util.ArrayList;
 
-
 /**
  * La classe Grille modèlise le terrain sur lequels vont se battre les automates
  * Elle est définie par :
@@ -30,7 +29,7 @@ public class Grille {
      * @throws IllegalArgumentException Si la longueur du tableau "taille" n'est pas de 2.
      * @throws IndexOutOfBoundsException Si la taille est négative
      */
-    Grille(int[] taille, ArrayList<Cellule> listeDesCellules, AlgorithmeExtension algorithmeExtension){
+    public Grille(int[] taille, ArrayList<Cellule> listeDesCellules, AlgorithmeExtension algorithmeExtension){
         if(taille.length != 2){
             throw new IllegalArgumentException("La grille n'est pas de dimension deux.");
         }
@@ -51,7 +50,7 @@ public class Grille {
      * @return Taille de la grille.
      *
      */
-    int[] getTaille() {
+    public int[] getTaille() {
         return this._taille;
     }
 
@@ -61,7 +60,7 @@ public class Grille {
      * @return Liste des cellules vivantes de la grille.
      *
      */
-    ArrayList<Cellule> getListeCellules() {
+    public ArrayList<Cellule> getListeCellules() {
         return this._listeDesCellules;
     }
     //endregion
@@ -73,7 +72,7 @@ public class Grille {
      * @return Liste des automates encore en jeu
      *
      */
-    ArrayList<Automate> getAutomatesEnJeu(){
+    public ArrayList<Automate> getAutomatesEnJeu(){
         ArrayList<Automate> listeDesAutomates = new ArrayList<>();
 
         //Pour chaque cellule, si l'automate n'est pas encore aujouté dans la liste on l'ajoute.
@@ -114,7 +113,7 @@ public class Grille {
      *
      * @throws IllegalArgumentException Si la longueur du tableau "position" n'est pas de 2.
      */
-    ArrayList<Cellule> getCellules(int[] position) {
+    public ArrayList<Cellule> getCellules(int[] position) {
         if(position.length != 2){
             throw new IllegalArgumentException("La position demandé ne s'inscrit pas dans un espace de dimension 2.");
         }

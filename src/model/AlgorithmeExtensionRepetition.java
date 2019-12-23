@@ -9,6 +9,17 @@ import java.util.ArrayList;
  */
 public class AlgorithmeExtensionRepetition implements AlgorithmeExtension {
 
+    String _name = "Extension par répétition";
+
+    public AlgorithmeExtensionRepetition(){
+
+    }
+
+    public String getName(){
+        return _name;
+    }
+
+
     /**
      * Méthode qui renvoie les cellules qui sont présente sur une case de la grille donnée en paramètre.
      * La case peut être hors des limites du terrain, l'algorithme d'extension décidera quoi faire.

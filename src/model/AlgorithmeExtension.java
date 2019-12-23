@@ -20,4 +20,6 @@ public interface AlgorithmeExtension {
      *
      */
     ArrayList<Cellule> getCellules(Grille grille, int[] position);
+
+    String getName();
 }

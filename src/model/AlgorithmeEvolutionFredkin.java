@@ -5,27 +5,28 @@ import java.util.ArrayList;
 
 /**
  * Classe qui permet de définir l'évolution des automates dans sur leur grille'
- * Est une implémentation du pattern Stratégie : "GameOfLife"
+ * Est une implémentation du pattern Stratégie : "Fredkin"
  *
  */
-public class AlgorithmeEvolutionGOL implements AlgorithmeEvolution {
+public class AlgorithmeEvolutionFredkin implements AlgorithmeEvolution {
 
     //region Attributs
-    private static AlgorithmeEvolutionGOL _instance = null;
-    private static String _name = "Game Of Life";
+    private static AlgorithmeEvolutionFredkin _instance = null;
+    private static String _name = "Fredkin";
     //endregion
 
     //region Constructeur/Singleton
     /**
-     * Constructeur de la classe ALgorithmeEvolutionGOL. Utilisé uniquement dans la méthode getInstance()
+     * Constructeur de la classe ALgorithmeEvolutionFredkins. Utilisé uniquement dans la méthode getInstance()
+     *
      *
      */
-    AlgorithmeEvolutionGOL(){
+    AlgorithmeEvolutionFredkin(){
         _instance = this;
     }
 
     /**
-     * Méthode du design patern singleton, qui permet de prendre une seule instance de la classe AlgorithmeEvolutionGOL
+     * Méthode du design patern singleton, qui permet de prendre une seule instance de la classe AlgorithmeEvolutionFredkin
      *
      *
      * @return Nouvelle instance de l'algorithme d'évolution GOL associé à l'automate.
@@ -33,8 +34,8 @@ public class AlgorithmeEvolutionGOL implements AlgorithmeEvolution {
      * @throws ExceptionInInitializerError Renvoyé si l'algorithme à déjà été associé à l'automate.
      *
      */
-    public static AlgorithmeEvolutionGOL getInstance(){
-        if(_instance == null) _instance = new AlgorithmeEvolutionGOL();
+    public static AlgorithmeEvolutionFredkin getInstance(){
+        if(_instance == null) _instance = new AlgorithmeEvolutionFredkin();
         else throw new ExceptionInInitializerError("Un automate est déjà associé à cet algorithme d'évolution");
         return  _instance;
 
@@ -54,7 +55,7 @@ public class AlgorithmeEvolutionGOL implements AlgorithmeEvolution {
     //region Méthodes d'instances
     /**
      * Méthode qui définit comment les automates s'étendent.
-     * Cette méthode suit les rêgles d'évolution "GameOfLife".
+     * Cette méthode suit les rêgles d'évolution "Fredkin".
      *
      */
     public void evolution(Automate automate) {
@@ -80,14 +81,14 @@ public class AlgorithmeEvolutionGOL implements AlgorithmeEvolution {
                     //On regarde combien de cellules vivante autour d'elle
                     int nbCellulesVivantes = nbCellulesVivantes(automate, position, terrain);
 
-                    //Si la cellule est morte et a exactement 3 cellules vivantes autour, elle nait
+                    //Si la cellule est morte et a exactement 1 ou 3 cellules vivantes autour, elle nait
                     ArrayList<Cellule> cellulesACetEndroit = terrain.getCellules(position);
                     cellulesACetEndroit.removeIf(cellule -> (cellule.getParent()!=automate));
-                    if(cellulesACetEndroit.size() == 0 && nbCellulesVivantes == 3){
+                    if(cellulesACetEndroit.size() == 0 && (nbCellulesVivantes == 3 ||nbCellulesVivantes == 1)){
                         cellulesACreer.add(new int[]{x,y});
                     }
 
-                    //Si la cellule est vivante et qu'elle a moins de 2 ou plus de 3 voisines elle meurt
+                    //Si la cellule est vivante et qu'elle ni une, ni 3 cellules vivantes autour, elle meurt
                     if(cellulesACetEndroit.size() == 1 && nbCellulesVivantes != 2 && nbCellulesVivantes != 3){
                         cellulesASupprimer.add(cellulesACetEndroit.get(0));
                     }
@@ -126,35 +127,18 @@ public class AlgorithmeEvolutionGOL implements AlgorithmeEvolution {
 
         int nbCellulesVivantes = 0;
 
-        //En haut à gauche
-        if(automate.hasCellule(new int[]{position[0]-1, position[1]-1}, terrain)){ nbCellulesVivantes++; }
-
-
         //En haut au milieu
         if(automate.hasCellule(new int[]{position[0], position[1]-1}, terrain)){ nbCellulesVivantes++; }
-
-
-        //En haut à droite
-        if(automate.hasCellule(new int[]{position[0]+1, position[1]-1}, terrain)){ nbCellulesVivantes++; }
-
 
         //Milieu à gauche
         if(automate.hasCellule( new int[]{position[0]-1, position[1]}, terrain)){ nbCellulesVivantes++; }
 
-
         //Milieu à droite
         if(automate.hasCellule(new int[]{position[0]+1, position[1]}, terrain)){ nbCellulesVivantes++; }
-
-        //En bas à gauche
-        if(automate.hasCellule(new int[]{position[0]-1, position[1]+1}, terrain)){ nbCellulesVivantes++; }
-
 
         //En bas au milieu
         if(automate.hasCellule(new int[]{position[0], position[1]+1}, terrain)){ nbCellulesVivantes++; }
 
-        //En bas à droite
-        if(automate.hasCellule(new int[]{position[0]+1, position[1]+1}, terrain)){ nbCellulesVivantes++; }
-        
         return nbCellulesVivantes;
     }
     //endregion
