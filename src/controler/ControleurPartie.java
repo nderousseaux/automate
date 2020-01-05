@@ -8,14 +8,15 @@ import model.*;
 /**
  * La classe Controler gère la partie
  * Elle est définie par :
+ *  - Son instance (patron Singleton)
  *  - La grille qu'elle gère
  *  - Le nombre de tour déjà écoulé
  *  - Le nombre de tour maximum
  *
  */
 public class ControleurPartie {
-
     //region Attributs
+    private static ControleurPartie _instance = null;
     private int _currentTour;
     private int _nbTourMax;
     private Grille _grille;
@@ -34,6 +35,17 @@ public class ControleurPartie {
 
     //region Getters/Setters
     //region Relatif au controleur
+    /**
+     * Getter de l'instance du controleur
+     *
+     */
+    public static ControleurPartie getInstance() {
+        if(_instance == null)
+            _instance = new ControleurPartie();
+
+        return _instance;
+    }
+
     /**
      * Getter du numéro du tour courrant
      *
@@ -67,6 +79,16 @@ public class ControleurPartie {
         return _listeDesAutomates;
     }
 
+    /**
+     * Getter de tout les algorithmes d'évolution selectionnés ou non
+     *
+     * @return ArrayList d'algorithme, la liste des algorithmes d'évolution selectionnés ou non
+     *
+     */
+    public ArrayList<AlgorithmeEvolution> getListeAlgorithmesEvolution(){
+        ArrayList<AlgorithmeEvolution> retour = (ArrayList<AlgorithmeEvolution>) ListeAlgorithmeEvolution.listeAlgorithmeEvolution.clone();
+        return retour;
+    }
     /**
      * Getter de tout les algorithmes d'évolution non encore séléctionnés.
      *
@@ -279,12 +301,24 @@ public class ControleurPartie {
 
     /**
      * Procèdure qui crée un automate avec son algorithme d'évolution et son nom.
+     * Cette version utilise les algorithmes d'évolution disponibles
      *
      * @param indexAlgorithmeEvolution Algorithme d'évolution de l'automate
      * @param name Nom de l'automate
      */
     public void createAutomate(int indexAlgorithmeEvolution, String name){
         _listeDesAutomates.add(new Automate(getListeAlgorithmesEvolutionDisponible().get(indexAlgorithmeEvolution), name));
+    }
+
+    /**
+     * Procèdure qui crée un automate avec son algorithme d'évolution et son nom.
+     * Cette version utilise tous les algorithmes d'évolution existants (disponibles ou non)
+     *
+     * @param indexAlgorithmeEvolution Algorithme d'évolution de l'automate
+     * @param name Nom de l'automate
+     */
+    public void createAutomate2(int indexAlgorithmeEvolution, String name){
+        _listeDesAutomates.add(new Automate(getListeAlgorithmesEvolution().get(indexAlgorithmeEvolution), name));
     }
 
     /**

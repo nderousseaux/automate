@@ -1,4 +1,5 @@
 import controler.ControleurPartie;
+import controler.ControleurVue;
 import view.TextualView;
 
 //TODO:Vue graphique
@@ -11,6 +12,8 @@ public class Main {
     public static void main(String[] args) {
         ControleurPartie controleur = new ControleurPartie();
         TextualView textualView = new TextualView(controleur);
-        textualView.start();
+        //textualView.start();
+
+        ControleurVue.getInstance().start();
     }
 }
