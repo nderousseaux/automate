@@ -1,5 +1,6 @@
 package controler;
 
+import view.FenetreEvolution;
 import view.FenetreIntro;
 import view.FenetreParametres;
 import view.FenetrePlacement;
@@ -41,5 +42,9 @@ public class ControleurVue {
 
     public void ouvrirPlacement() {
         new FenetrePlacement();
+    }
+
+    public void ouvrirEvolution() {
+        new FenetreEvolution();
     }
 }

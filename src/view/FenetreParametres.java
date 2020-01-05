@@ -26,6 +26,7 @@ public class FenetreParametres extends JFrame {
         this.setTitle("Automates cellulaires - Paramètres");
         this.setSize(680, 680);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
         // Ajout d'un texte d'introduction à la fenêtre
         JLabel jl = new JLabel("<html><h2 style='margin:0;padding:0'>Paramètres de la partie</h2>" +
@@ -123,13 +124,24 @@ public class FenetreParametres extends JFrame {
             _parametres.put("J2Type", comboTypeJ2.getSelectedIndex());
             _parametres.put("J2Nom", txtNomJ2.getText());
 
+            // Debug
+            _parametres.clear();
+            _parametres.put("LongueurGrille", 10);
+            _parametres.put("LargeurGrille", 5);
+            _parametres.put("AlgoExpension", 0);
+            _parametres.put("CellulesDepart", 2);
+            _parametres.put("NombreTours", 5);
+            _parametres.put("J1Type", 0);
+            _parametres.put("J1Nom", "JoueurA");
+            _parametres.put("J2Type", 1);
+            _parametres.put("J2Nom", "JoueurB");
+
             // On traite les paramètres
             traiterParametres();
         });
         this.add(btnSuite, BorderLayout.SOUTH);
 
         // Affichage de la fenêtre
-        this.setResizable(false);
         this.setVisible(true);
     }
 

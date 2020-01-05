@@ -45,6 +45,13 @@ public class ControleurPartie {
 
         return _instance;
     }
+    /**
+     * Getter de la grille du controleur
+     *
+     */
+    public Grille getGrille(){
+        return _grille;
+    }
 
     /**
      * Getter du numéro du tour courrant

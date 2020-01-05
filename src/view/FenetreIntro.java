@@ -19,6 +19,7 @@ public class FenetreIntro extends JFrame {
         this.setTitle("Automates cellulaires - Introduction");
         this.setSize(680, 280);
         this.setLocationRelativeTo(null);
+        this.setResizable(false);
 
         // Ajout du texte d'introduction à la fenêtre
         JLabel jl = new JLabel("<html><h2 style='margin:0;padding:0'>Bienvenue sur le jeu de combat d'automates !</h2>" +
@@ -42,7 +43,6 @@ public class FenetreIntro extends JFrame {
         this.add(btn, BorderLayout.SOUTH);
 
         // Affichage de la fenêtre
-        this.setResizable(false);
         this.setVisible(true);
     }
 }
