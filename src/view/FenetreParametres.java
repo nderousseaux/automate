@@ -39,7 +39,7 @@ public class FenetreParametres extends JFrame {
         this.add(container, BorderLayout.CENTER);
 
         // DEBUT PARAMETRES GENERAUX
-        JPanel jp = new JPanel(new GridLayout(4, 1));
+        JPanel jp = new JPanel(new GridLayout(8, 1));
         Border border = BorderFactory.createTitledBorder("Paramètres généraux de la partie");
         jp.setBorder(border);
 
@@ -63,6 +63,16 @@ public class FenetreParametres extends JFrame {
         JComboBox comboExpension = new JComboBox(listeMeth);
         jp.add(comboExpension);
         container.add(jp);
+
+        // Nombre de cellules en vie initialement
+        jp.add(new JLabel("Nombre initial de cellules par automate"));
+        JSpinner jsCellules = new JSpinner(new SpinnerNumberModel(1, 1, null, 1));
+        jp.add(jsCellules);
+
+        // Nombre de tours
+        jp.add(new JLabel("Nombre de tours"));
+        JSpinner jsTours = new JSpinner(new SpinnerNumberModel(1, 1, null, 1));
+        jp.add(jsTours);
         // FIN PARAMETRES GENERAUX
 
         // Construction de la liste des types d'automate
@@ -106,8 +116,8 @@ public class FenetreParametres extends JFrame {
             _parametres.put("LongueurGrille", jsLong.getValue());
             _parametres.put("LargeurGrille", jsLong.getValue());
             _parametres.put("AlgoExpension", comboExpension.getSelectedIndex());
-            _parametres.put("CellulesDepart", 3);
-            _parametres.put("NombreTours", 5);
+            _parametres.put("CellulesDepart", jsCellules.getValue());
+            _parametres.put("NombreTours", jsTours.getValue());
             _parametres.put("J1Type", comboTypeJ1.getSelectedIndex());
             _parametres.put("J1Nom", txtNomJ1.getText());
             _parametres.put("J2Type", comboTypeJ2.getSelectedIndex());
@@ -136,10 +146,17 @@ public class FenetreParametres extends JFrame {
         } else if((int)_parametres.get("J1Type") == (int)_parametres.get("J2Type")) {
             // Les deux joueurs ont le même type d'automate
             JOptionPane.showMessageDialog(this, "Chaque joueur doit avoir un type d'automate différent.", "Erreur", JOptionPane.ERROR_MESSAGE);
+        } else if((int)_parametres.get("CellulesDepart")*2 > (int)_parametres.get("LargeurGrille")*(int)_parametres.get("LargeurGrille")) {
+            // Trop de cellules de départ pour pouvoir tout placer sur la grille
+            JOptionPane.showMessageDialog(this, "La grille est trop petite pour accueillir autant de cellules initialement.", "Erreur", JOptionPane.ERROR_MESSAGE);
         } else {
             // Tout est bon
             // Initialisation de la grille
             ControleurPartie.getInstance().initGrille((int)_parametres.get("LongueurGrille"), (int)_parametres.get("LargeurGrille"), (int)_parametres.get("AlgoExpension"));
+
+            // Enregistrement des paramètres généraux
+            ControleurPartie.getInstance().setNbCelluleVivante((int)_parametres.get("CellulesDepart"));
+            ControleurPartie.getInstance().setNbTourMax((int)_parametres.get("NombreTours"));
 
             // Creation de l'automate du joueur 1
             ControleurPartie.getInstance().createAutomate2((int)_parametres.get("J1Type"), _parametres.get("J1Nom").toString());
