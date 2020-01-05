@@ -1,6 +1,6 @@
 package view;
 
-import controler.Controler;
+import controler.ControleurPartie;
 import model.*;
 
 import java.util.ArrayList;
@@ -20,18 +20,18 @@ import java.util.Scanner;
 public class TextualView {
 
     //region Attributs
-    Controler _controler;
+    ControleurPartie _controleurPartie;
     //endregion
 
     //region Constructeur
     /**
      * Constructeur de la classe TextualView
      *
-     * @param controler Controleur que va manipuler la vue
+     * @param controleurPartie Controleur que va manipuler la vue
      *
      */
-    public TextualView(Controler controler){
-        _controler = controler;
+    public TextualView(ControleurPartie controleurPartie){
+        _controleurPartie = controleurPartie;
     }
     //endregion
 
@@ -88,7 +88,7 @@ public class TextualView {
         //region Extension de la grille
 
         System.out.println("\nMaintenant, choisissez la méthode d'expension de la grille parmit cette liste : ");
-        for (AlgorithmeExtension algo: _controler.getListeAlgorithmeExtension()) {
+        for (AlgorithmeExtension algo: _controleurPartie.getListeAlgorithmeExtension()) {
             System.out.println(ListeAlgorithmeExtension.listeAlgorithmeExtension.indexOf(algo) + " : " + algo.getName());
         }
         int indexAlgoExtension = askInt(scanner, "Votre choix : ", 0, ListeAlgorithmeEvolution.listeAlgorithmeEvolution.size()-1);
@@ -96,43 +96,43 @@ public class TextualView {
         //endregion
 
         //On initialise la grille
-        _controler.initGrille(longueur, largeur, indexAlgoExtension);
+        _controleurPartie.initGrille(longueur, largeur, indexAlgoExtension);
 
         //endregion
 
         //region Réglages partie
-        int nbCelluleVivante = askInt(scanner, "\nChoisissez combien de cellules vivantes vous aurrez par personne au début de la partie :", 1, _controler.getNbCase()/2);
-        _controler.setNbCelluleVivante(nbCelluleVivante);
+        int nbCelluleVivante = askInt(scanner, "\nChoisissez combien de cellules vivantes vous aurrez par personne au début de la partie :", 1, _controleurPartie.getNbCase()/2);
+        _controleurPartie.setNbCelluleVivante(nbCelluleVivante);
 
         int nbTourMax = askInt(scanner, "\nChoisissez combien de tour durera la partie :");
-        _controler.setNbTourMax(nbTourMax);
+        _controleurPartie.setNbTourMax(nbTourMax);
         //endregion
 
         //region Réglage premier automate
         System.out.println("\nJoueur 1 : Choisi ton automate");
         System.out.println("Choisissez la méthode d'expension de la grille parmit cette liste : ");
-        for (AlgorithmeEvolution algo: _controler.getListeAlgorithmesEvolutionDisponible()){
+        for (AlgorithmeEvolution algo: _controleurPartie.getListeAlgorithmesEvolutionDisponible()){
             System.out.println(ListeAlgorithmeEvolution.listeAlgorithmeEvolution.indexOf(algo) + " : " + algo.getName());
         }
-        int indexAlgoEvolutionJ1 = askInt(scanner, "Votre choix :", 0, _controler.getListeAlgorithmesEvolutionDisponible().size()-1);
+        int indexAlgoEvolutionJ1 = askInt(scanner, "Votre choix :", 0, _controleurPartie.getListeAlgorithmesEvolutionDisponible().size()-1);
         System.out.println("Vous avez choisi " + ListeAlgorithmeEvolution.listeAlgorithmeEvolution.get(indexAlgoEvolutionJ1).getName() +" !");
         System.out.print("Nom de l'automate (sans espaces): ");
         String nomJ1 = scanner.next();
-        _controler.createAutomate(indexAlgoEvolutionJ1, nomJ1);
+        _controleurPartie.createAutomate(indexAlgoEvolutionJ1, nomJ1);
         //endregion
 
         //region Réglage second automate
         System.out.println("\nJoueur 2 : Choisi ton automate");
         System.out.println("Choisissez la méthode d'expension de la grille parmit cette liste : ");
-        for (AlgorithmeEvolution algo: _controler.getListeAlgorithmesEvolutionDisponible()){
-            System.out.println(_controler.getListeAlgorithmesEvolutionDisponible().indexOf(algo) + " : " + algo.getName());
+        for (AlgorithmeEvolution algo: _controleurPartie.getListeAlgorithmesEvolutionDisponible()){
+            System.out.println(_controleurPartie.getListeAlgorithmesEvolutionDisponible().indexOf(algo) + " : " + algo.getName());
         }
-        int indexAlgoEvolutionJ2 = askInt(scanner, "Votre choix :", 0, _controler.getListeAlgorithmesEvolutionDisponible().size()-1);
-        System.out.println("Vous avez choisi " + _controler.getListeAlgorithmesEvolutionDisponible().get(indexAlgoEvolutionJ2).getName() +" !");
+        int indexAlgoEvolutionJ2 = askInt(scanner, "Votre choix :", 0, _controleurPartie.getListeAlgorithmesEvolutionDisponible().size()-1);
+        System.out.println("Vous avez choisi " + _controleurPartie.getListeAlgorithmesEvolutionDisponible().get(indexAlgoEvolutionJ2).getName() +" !");
         System.out.print("Nom de l'automate (sans espaces): ");
         String nomJ2 = "";
         nomJ2 += scanner.next();
-        _controler.createAutomate(indexAlgoEvolutionJ2, nomJ2);
+        _controleurPartie.createAutomate(indexAlgoEvolutionJ2, nomJ2);
         //endregion
     }
 
@@ -144,27 +144,27 @@ public class TextualView {
         Scanner scanner = new Scanner(System.in);
 
         //On mélange la liste
-        _controler.mix();
+        _controleurPartie.mix();
 
-        System.out.println("C'est " + _controler.getListeDesAutomates().get(0).getName() + " qui commence !");
+        System.out.println("C'est " + _controleurPartie.getListeDesAutomates().get(0).getName() + " qui commence !");
 
         //On boucle pour chaque cellule à placer
-        for (int i=0; i<_controler.getNbCelluleVivante();i++) {
+        for (int i = 0; i< _controleurPartie.getNbCelluleVivante(); i++) {
             //On boucle dans tout les automates
-            for (Automate automate:_controler.getListeDesAutomates()) {
+            for (Automate automate: _controleurPartie.getListeDesAutomates()) {
                 while(true){
                     try{
                         System.out.println(automate.getName() + " , placez une cellule : ");
-                        int x = askInt(scanner, "Position en x : ", 0, _controler.getDimensionX());
-                        int y = askInt(scanner, "Position en y : ", 0, _controler.getDimensionY());
-                        _controler.addCellule(x, y, automate);
+                        int x = askInt(scanner, "Position en x : ", 0, _controleurPartie.getDimensionX());
+                        int y = askInt(scanner, "Position en y : ", 0, _controleurPartie.getDimensionY());
+                        _controleurPartie.addCellule(x, y, automate);
                         break;
                     }
                     catch(IllegalArgumentException e){
                         System.out.println("La place est déjà prise !");
                     }
                     finally {
-                        System.out.println(_controler.stringGrille());
+                        System.out.println(_controleurPartie.stringGrille());
                     }
                 }
 
@@ -180,10 +180,10 @@ public class TextualView {
      */
     private void evolution(){
         //Tant que ce n'est pas la fin, on passe un tour, et on affiche la grille
-        while(_controler.IsFin() == null){
-            _controler.nextTour();
-            System.out.println("Tour n°"+ _controler.getCurrentTour() + "/" + _controler.getNbTourMax());
-            System.out.println(_controler.stringGrille());
+        while(_controleurPartie.IsFin() == null){
+            _controleurPartie.nextTour();
+            System.out.println("Tour n°"+ _controleurPartie.getCurrentTour() + "/" + _controleurPartie.getNbTourMax());
+            System.out.println(_controleurPartie.stringGrille());
         }
     }
 
@@ -193,10 +193,10 @@ public class TextualView {
      */
     private void winners(){
         //On affiche une dernière fois la grille
-        System.out.println(_controler.stringGrille());
+        System.out.println(_controleurPartie.stringGrille());
 
         //On déclare le vainqueur
-        ArrayList<Automate> vainqueurs = _controler.IsFin();
+        ArrayList<Automate> vainqueurs = _controleurPartie.IsFin();
         //Si la liste et vide, match nul.
         if(vainqueurs.size() == 0){
             System.out.println("Match nul");

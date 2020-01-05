@@ -1,11 +1,5 @@
-import controler.Controler;
-import model.AlgorithmeExtensionRepetition;
-import model.Automate;
-import model.Cellule;
-import model.Grille;
+import controler.ControleurPartie;
 import view.TextualView;
-
-import java.util.ArrayList;
 
 //TODO:Vue graphique
 //TODO:Vérifier si la méthode algorithme d'évolution est conforme au sujet
@@ -15,7 +9,7 @@ import java.util.ArrayList;
 public class Main {
 
     public static void main(String[] args) {
-        Controler controleur = new Controler();
+        ControleurPartie controleur = new ControleurPartie();
         TextualView textualView = new TextualView(controleur);
         textualView.start();
     }

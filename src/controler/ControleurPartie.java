@@ -13,7 +13,7 @@ import model.*;
  *  - Le nombre de tour maximum
  *
  */
-public class Controler {
+public class ControleurPartie {
 
     //region Attributs
     private int _currentTour;
@@ -28,7 +28,7 @@ public class Controler {
      * Constructeur de la classe Controler.
      *
      */
-    public Controler(){
+    public ControleurPartie(){
     }
     //endregion
 
