@@ -21,7 +21,7 @@ public class FenetrePlacement extends JFrame {
 
     // region Constructeur
     /**
-     * Constructeur de la classe FenetreIntro
+     * Constructeur de la classe FenetrePlacement
      */
     public FenetrePlacement() {
         super();

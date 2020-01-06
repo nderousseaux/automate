@@ -176,7 +176,7 @@ public class FenetreParametres extends JFrame {
             // Trop de cellules de départ pour pouvoir tout placer sur la grille
             JOptionPane.showMessageDialog(this, "La grille est trop petite pour accueillir autant de cellules initialement.", "Erreur", JOptionPane.ERROR_MESSAGE);
         } else {
-            // Tout est bon
+            // Tout est bon !
             // Initialisation de la grille
             ControleurPartie.getInstance().initGrille((int)_parametres.get("LongueurGrille"), (int)_parametres.get("LargeurGrille"), (int)_parametres.get("AlgoExpension"));
 
