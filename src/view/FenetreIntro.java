@@ -1,7 +1,5 @@
 package view;
 
-import controler.ControleurVue;
-
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
@@ -40,7 +38,7 @@ public class FenetreIntro extends JFrame {
 
         btn.addActionListener(e -> {
             this.dispose();
-            ControleurVue.getInstance().ouvrirParametres();
+            GestionnaireVue.getInstance().ouvrirParametres();
         });
 
         this.add(btn, BorderLayout.SOUTH);

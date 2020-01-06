@@ -1,7 +1,6 @@
 package view;
 
 import controler.ControleurPartie;
-import controler.ControleurVue;
 import model.AlgorithmeEvolution;
 import model.AlgorithmeExtension;
 
@@ -191,7 +190,7 @@ public class FenetreParametres extends JFrame {
             ControleurPartie.getInstance().createAutomate2((int)_parametres.get("J2Type"), _parametres.get("J2Nom").toString());
 
             this.dispose();
-            ControleurVue.getInstance().ouvrirPlacement();
+            GestionnaireVue.getInstance().ouvrirPlacement();
         }
     }
     //endregion

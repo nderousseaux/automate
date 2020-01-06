@@ -1,7 +1,6 @@
 package view;
 
 import controler.ControleurPartie;
-import controler.ControleurVue;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
@@ -98,7 +97,7 @@ public class FenetrePlacement extends JFrame {
         } else {
             // Lancement de l'évolution des automates
             this.dispose();
-            ControleurVue.getInstance().ouvrirEvolution();
+            GestionnaireVue.getInstance().ouvrirEvolution();
         }
     }
     //endregion

@@ -1,20 +1,15 @@
-package controler;
-
-import view.FenetreEvolution;
-import view.FenetreIntro;
-import view.FenetreParametres;
-import view.FenetrePlacement;
+package view;
 
 
 /**
- * La classe ControleurVue gère la vue du jeu
+ * La classe GestionnaireVue gère la vue du jeu
  * Elle est définie par :
  *  - Son instance (patron Singleton)
  *
  */
-public class ControleurVue {
+public class GestionnaireVue {
     //region Attributs
-    private static ControleurVue _instance = null;
+    private static GestionnaireVue _instance = null;
     //endregion
 
     //region Getters/Setters
@@ -23,9 +18,9 @@ public class ControleurVue {
      * Getter de l'instance du controleur
      *
      */
-    public static ControleurVue getInstance() {
+    public static GestionnaireVue getInstance() {
         if(_instance == null)
-            _instance = new ControleurVue();
+            _instance = new GestionnaireVue();
 
         return _instance;
     }

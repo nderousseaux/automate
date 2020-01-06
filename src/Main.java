@@ -1,4 +1,4 @@
-import controler.ControleurVue;
+import view.GestionnaireVue;
 
 /**
  * La classe Main est la classe principale permet l'exécution du jeu
@@ -15,6 +15,6 @@ public class Main {
 
         // Vue graphique
         // Appel au controleur de vue qui se charge de lancer les fenêtres successivement
-        ControleurVue.getInstance().start();
+        GestionnaireVue.getInstance().start();
     }
 }
