@@ -1,9 +1,12 @@
 package controler;
 
+import model.Cellule;
 import view.FenetreEvolution;
 import view.FenetreIntro;
 import view.FenetreParametres;
 import view.FenetrePlacement;
+
+import java.util.ArrayList;
 
 /**
  * La classe Controler gère la vue du jeu
@@ -15,6 +18,7 @@ import view.FenetrePlacement;
  */
 public class ControleurVue {
     private static ControleurVue _instance = null;
+    private static FenetreEvolution _fenetre;
 
     public static ControleurVue getInstance() {
         if(_instance == null)
@@ -45,6 +49,6 @@ public class ControleurVue {
     }
 
     public void ouvrirEvolution() {
-        new FenetreEvolution();
+        _fenetre = new FenetreEvolution();
     }
 }

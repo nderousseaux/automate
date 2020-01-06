@@ -65,7 +65,7 @@ public class Cellule {
      * @return Automate à qui appartient la cellule
      *
      */
-     Automate getParent() {
+    public Automate getParent() {
         return this._parent;
     }
 

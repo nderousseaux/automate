@@ -115,7 +115,7 @@ public class FenetreParametres extends JFrame {
             // On actualise les paramètres dans la HashMap
             _parametres.clear();
             _parametres.put("LongueurGrille", jsLong.getValue());
-            _parametres.put("LargeurGrille", jsLong.getValue());
+            _parametres.put("LargeurGrille", jsLarg.getValue());
             _parametres.put("AlgoExpension", comboExpension.getSelectedIndex());
             _parametres.put("CellulesDepart", jsCellules.getValue());
             _parametres.put("NombreTours", jsTours.getValue());
@@ -124,17 +124,17 @@ public class FenetreParametres extends JFrame {
             _parametres.put("J2Type", comboTypeJ2.getSelectedIndex());
             _parametres.put("J2Nom", txtNomJ2.getText());
 
-            // Debug
-            _parametres.clear();
+            // Debug : Parametrer automatiquement
+            /*_parametres.clear();
             _parametres.put("LongueurGrille", 10);
             _parametres.put("LargeurGrille", 5);
             _parametres.put("AlgoExpension", 0);
-            _parametres.put("CellulesDepart", 2);
+            _parametres.put("CellulesDepart", 1);
             _parametres.put("NombreTours", 5);
             _parametres.put("J1Type", 0);
             _parametres.put("J1Nom", "JoueurA");
             _parametres.put("J2Type", 1);
-            _parametres.put("J2Nom", "JoueurB");
+            _parametres.put("J2Nom", "JoueurB");*/
 
             // On traite les paramètres
             traiterParametres();
