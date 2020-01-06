@@ -26,7 +26,8 @@ public class Automate {
      *
      */
     public Automate(AlgorithmeEvolution algorithmeEvolution, String name){
-        _algoEvolution = algorithmeEvolution;_name = name;
+        _algoEvolution = algorithmeEvolution;
+        _name = name;
     }
     //endregion
 
@@ -84,13 +85,6 @@ public class Automate {
         return _name;
     }
 
-    /**
-     * Setter du nom de l'automate
-     *
-     */
-    public void setName(String name) {
-        this._name = name;
-    }
     //endregion
 
     //region Méthodes d'instances

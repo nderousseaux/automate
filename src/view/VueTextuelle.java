@@ -91,7 +91,7 @@ public class VueTextuelle {
         for (AlgorithmeExtension algo: _controleurPartie.getListeAlgorithmeExtension()) {
             System.out.println(ListeAlgorithmeExtension.listeAlgorithmeExtension.indexOf(algo) + " : " + algo.getName());
         }
-        int indexAlgoExtension = askInt(scanner, "Votre choix : ", 0, ListeAlgorithmeEvolution.listeAlgorithmeEvolution.size()-1);
+        int indexAlgoExtension = askInt(scanner, "Votre choix : ", 0, ListeAlgorithmeEvolution._listeAlgorithmeEvolution.size()-1);
         System.out.println("Vous avez choisi " + ListeAlgorithmeExtension.listeAlgorithmeExtension.get(indexAlgoExtension).getName() +" !");
         //endregion
 
@@ -112,10 +112,10 @@ public class VueTextuelle {
         System.out.println("\nJoueur 1 : Choisi ton automate");
         System.out.println("Choisissez la méthode d'expension de la grille parmit cette liste : ");
         for (AlgorithmeEvolution algo: _controleurPartie.getListeAlgorithmesEvolutionDisponible()){
-            System.out.println(ListeAlgorithmeEvolution.listeAlgorithmeEvolution.indexOf(algo) + " : " + algo.getName());
+            System.out.println(ListeAlgorithmeEvolution._listeAlgorithmeEvolution.indexOf(algo) + " : " + algo.getName());
         }
         int indexAlgoEvolutionJ1 = askInt(scanner, "Votre choix :", 0, _controleurPartie.getListeAlgorithmesEvolutionDisponible().size()-1);
-        System.out.println("Vous avez choisi " + ListeAlgorithmeEvolution.listeAlgorithmeEvolution.get(indexAlgoEvolutionJ1).getName() +" !");
+        System.out.println("Vous avez choisi " + ListeAlgorithmeEvolution._listeAlgorithmeEvolution.get(indexAlgoEvolutionJ1).getName() +" !");
         System.out.print("Nom de l'automate (sans espaces): ");
         String nomJ1 = scanner.next();
         _controleurPartie.createAutomate(indexAlgoEvolutionJ1, nomJ1);

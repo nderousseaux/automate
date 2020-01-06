@@ -2,11 +2,11 @@ package model;
 
 import java.util.ArrayList;
 
-public class ListeAlgorithmeEvolution {
+public abstract class ListeAlgorithmeEvolution {
 
-    public static ArrayList<AlgorithmeEvolution> listeAlgorithmeEvolution = new ArrayList<>() {{
-        add(AlgorithmeEvolutionGOL.getInstance());
-        add(AlgorithmeEvolutionFredkin.getInstance());
+    public static ArrayList<AlgorithmeEvolution> _listeAlgorithmeEvolution = new ArrayList<>() {{
+        add(new AlgorithmeEvolutionGOL());
+        add(new AlgorithmeEvolutionFredkin());
     }};
 
 }

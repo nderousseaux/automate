@@ -9,6 +9,8 @@ import java.util.ArrayList;
  */
 public interface AlgorithmeExtension {
 
+    String _name = null;
+
     /**
      * Méthode qui renvoie les cellules qui sont présente sur une case de la grille donnée en paramètre.
      * La case peut être hors des limites du terrain, l'algorithme d'extension décidera quoi faire.

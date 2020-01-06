@@ -93,7 +93,7 @@ public class ControleurPartie {
      *
      */
     public ArrayList<AlgorithmeEvolution> getListeAlgorithmesEvolution(){
-        ArrayList<AlgorithmeEvolution> retour = (ArrayList<AlgorithmeEvolution>) ListeAlgorithmeEvolution.listeAlgorithmeEvolution.clone();
+        ArrayList<AlgorithmeEvolution> retour = (ArrayList<AlgorithmeEvolution>) ListeAlgorithmeEvolution._listeAlgorithmeEvolution.clone();
         return retour;
     }
     /**
@@ -103,7 +103,7 @@ public class ControleurPartie {
      *
      */
     public ArrayList<AlgorithmeEvolution> getListeAlgorithmesEvolutionDisponible(){
-        ArrayList<AlgorithmeEvolution> retour = (ArrayList<AlgorithmeEvolution>) ListeAlgorithmeEvolution.listeAlgorithmeEvolution.clone();
+        ArrayList<AlgorithmeEvolution> retour = (ArrayList<AlgorithmeEvolution>) ListeAlgorithmeEvolution._listeAlgorithmeEvolution.clone();
         for (Automate automate:_listeDesAutomates) {
             retour.remove(automate.getAlgoEvolution());
         }

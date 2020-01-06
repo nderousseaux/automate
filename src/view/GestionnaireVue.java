@@ -13,9 +13,9 @@ public class GestionnaireVue {
     //endregion
 
     //region Getters/Setters
-    //region Relatif au controleur
+    //region Relatif au gestionnaire
     /**
-     * Getter de l'instance du controleur
+     * Getter de l'instance du gestionnaire
      *
      */
     public static GestionnaireVue getInstance() {

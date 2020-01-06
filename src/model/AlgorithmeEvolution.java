@@ -7,18 +7,8 @@ package model;
  */
 public interface AlgorithmeEvolution {
 
-    /**
-     * Méthode du design patern singleton, qui permet de prendre une seule instance de la classe AlgorithmeEvolution
-     *
-     *
-     * @return Nouvelle instance de l'algorithme d'évolution associé à l'automate.
-     *
-     * @throws ExceptionInInitializerError Renvoyé si l'algorithme à déjà été associé à l'automate.
-     *
-     */
-    static AlgorithmeEvolution getInstance() {
-        return null;
-    }
+    String name = null;
+
 
     /**
      * Méthode qui définit comment les automates s'étendent.

@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class AlgorithmeEvolutionGOL implements AlgorithmeEvolution {
 
     //region Attributs
-    private static AlgorithmeEvolutionGOL _instance = null;
     private static String _name = "Game Of Life";
     //endregion
 
@@ -21,22 +20,6 @@ public class AlgorithmeEvolutionGOL implements AlgorithmeEvolution {
      *
      */
     AlgorithmeEvolutionGOL(){
-        _instance = this;
-    }
-
-    /**
-     * Méthode du design patern singleton, qui permet de prendre une seule instance de la classe AlgorithmeEvolutionGOL
-     *
-     *
-     * @return Nouvelle instance de l'algorithme d'évolution GOL associé à l'automate.
-     *
-     * @throws ExceptionInInitializerError Renvoyé si l'algorithme à déjà été associé à l'automate.
-     *
-     */
-    public static AlgorithmeEvolutionGOL getInstance(){
-        if(_instance == null) _instance = new AlgorithmeEvolutionGOL();
-        else throw new ExceptionInInitializerError("Un automate est déjà associé à cet algorithme d'évolution");
-        return  _instance;
 
     }
     //endregion

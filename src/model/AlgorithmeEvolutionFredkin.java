@@ -11,7 +11,6 @@ import java.util.ArrayList;
 public class AlgorithmeEvolutionFredkin implements AlgorithmeEvolution {
 
     //region Attributs
-    private static AlgorithmeEvolutionFredkin _instance = null;
     private static String _name = "Fredkin";
     //endregion
 
@@ -21,24 +20,7 @@ public class AlgorithmeEvolutionFredkin implements AlgorithmeEvolution {
      *
      *
      */
-    AlgorithmeEvolutionFredkin(){
-        _instance = this;
-    }
-
-    /**
-     * Méthode du design patern singleton, qui permet de prendre une seule instance de la classe AlgorithmeEvolutionFredkin
-     *
-     *
-     * @return Nouvelle instance de l'algorithme d'évolution GOL associé à l'automate.
-     *
-     * @throws ExceptionInInitializerError Renvoyé si l'algorithme à déjà été associé à l'automate.
-     *
-     */
-    public static AlgorithmeEvolutionFredkin getInstance(){
-        if(_instance == null) _instance = new AlgorithmeEvolutionFredkin();
-        else throw new ExceptionInInitializerError("Un automate est déjà associé à cet algorithme d'évolution");
-        return  _instance;
-
+    public AlgorithmeEvolutionFredkin(){
     }
     //endregion
 
@@ -66,7 +48,6 @@ public class AlgorithmeEvolutionFredkin implements AlgorithmeEvolution {
                 listeDesTerrains.add(cellule.getTerrain());
             }
         }
-        
         //Pour chaque grille, on étend
         for (Grille terrain:listeDesTerrains) {
             //On crée des listes temporaires de cellules à créer et de cellules à supprimer.
