@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
- * La classe TextualView est une classe du package view, qui permet d'intéragir avec le modèle.
+ * La classe VueTextuelle est une classe du package view, qui permet d'intéragir avec le modèle.
  * Pour lancer une partie, on lance la procèdue "Start".
  * La partie se déroule en trois phases :
  *  1- Le choix des paramètres de jeux
@@ -17,7 +17,7 @@ import java.util.Scanner;
  * La classe est définie uniquement par son contrôleur.
  *
  */
-public class TextualView {
+public class VueTextuelle {
 
     //region Attributs
     ControleurPartie _controleurPartie;
@@ -25,12 +25,12 @@ public class TextualView {
 
     //region Constructeur
     /**
-     * Constructeur de la classe TextualView
+     * Constructeur de la classe VueTextuelle
      *
      * @param controleurPartie Controleur que va manipuler la vue
      *
      */
-    public TextualView(ControleurPartie controleurPartie){
+    public VueTextuelle(ControleurPartie controleurPartie){
         _controleurPartie = controleurPartie;
     }
     //endregion
