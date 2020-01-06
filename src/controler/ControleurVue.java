@@ -1,54 +1,54 @@
 package controler;
 
-import model.Cellule;
 import view.FenetreEvolution;
 import view.FenetreIntro;
 import view.FenetreParametres;
 import view.FenetrePlacement;
 
-import java.util.ArrayList;
 
 /**
- * La classe Controler gère la vue du jeu
+ * La classe ControleurVue gère la vue du jeu
  * Elle est définie par :
  *  - Son instance (patron Singleton)
- *  -
- *  -
  *
  */
 public class ControleurVue {
+    //region Attributs
     private static ControleurVue _instance = null;
-    private static FenetreEvolution _fenetre;
+    //endregion
 
+    //region Getters/Setters
+    //region Relatif au controleur
+    /**
+     * Getter de l'instance du controleur
+     *
+     */
     public static ControleurVue getInstance() {
         if(_instance == null)
             _instance = new ControleurVue();
 
         return _instance;
     }
+    //endregion
 
+    //region Méthodes d'instance
     /**
-     * Procédure lancant les différentes étapes de la vue d'une partie
-     * Elle lance successivement les quatre fenêtres (introduction, paramètres, placement des cellules et évolution)
+     * Ces procédures permettent de lancer les différentes fenêtres composant le jeu
+     * A savoir l'introduction, les paramètres, le placement des cellules intitiales et enfin l'évolution des automates)
      *
      */
     public void start() {
         ouvrirIntro();
     }
-
     public void ouvrirIntro() {
        new FenetreIntro();
     }
-
     public void ouvrirParametres() {
         new FenetreParametres();
     }
-
     public void ouvrirPlacement() {
         new FenetrePlacement();
     }
-
-    public void ouvrirEvolution() {
-        _fenetre = new FenetreEvolution();
-    }
+    public void ouvrirEvolution() { new FenetreEvolution(); }
+    //endregion
 }

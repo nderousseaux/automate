@@ -6,7 +6,7 @@ import java.util.Collections;
 import model.*;
 
 /**
- * La classe Controler gère la partie
+ * La classe ControleurPartie gère la partie
  * Elle est définie par :
  *  - Son instance (patron Singleton)
  *  - La grille qu'elle gère

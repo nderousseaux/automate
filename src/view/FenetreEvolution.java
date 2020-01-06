@@ -8,11 +8,20 @@ import javax.swing.border.EmptyBorder;
 import java.awt.*;
 import java.util.ArrayList;
 
+/**
+ * Fenêtre affichant l'évolution des automates (avancement de la partie)
+ * Elle est définie par :
+ *  - Une grille
+ *
+ */
 public class FenetreEvolution extends JFrame {
-    GrilleGraphique _grille = null;
+    //region Attributs
+    GrilleGraphique _grille;
+    //endregion
 
+    //region Constructeur
     /**
-     * Constructeur de la classe FenetreParametres
+     * Constructeur de la classe FenetreEvolution
      */
     public FenetreEvolution() {
         super();
@@ -40,9 +49,11 @@ public class FenetreEvolution extends JFrame {
         + "</span> | <span style='color: blue'>" + ControleurPartie.getInstance().getListeDesAutomates().get(1).getName() + "</span></html>");
         legende.setFont(new Font("Segoe UI", Font.BOLD, 22));
         this.add(legende, BorderLayout.SOUTH);
+
         // Affichage de la fenêtre
         this.setVisible(true);
 
+        // Création d'un thread différent pour pouvoir faire avancer la partie et rafraichir l'affichage en meme temps
         new Thread(() -> {
             try {
                 evolution();
@@ -51,19 +62,22 @@ public class FenetreEvolution extends JFrame {
             }
         }).start();
     }
+    //endregion
 
-
+    //region Méthodes d'instance
     /**
      * Procèdure qui gère l'évolution des automates une fois la partie lancée.
      *
      */
     public void evolution() throws InterruptedException {
+        // Tant que la partie ne doit pas se terminer on fait passer les tours
         while(ControleurPartie.getInstance().IsFin() == null){
             ControleurPartie.getInstance().nextTour();
-            System.out.println(ControleurPartie.getInstance().stringGrille());
             _grille.refresh(ControleurPartie.getInstance().getGrille().getListeCellules());
             Thread.sleep(2000);
         }
+
+        // La partie est terminée, on créer la pop-up qui annonce le(s) vainqueur(s)
         String msg = "La partie est terminée !\n";
         ArrayList<Automate> vainqueurs = ControleurPartie.getInstance().IsFin();
 
@@ -78,8 +92,10 @@ public class FenetreEvolution extends JFrame {
             }
         }
         JOptionPane.showMessageDialog(this, msg, "Fin de la partie !", JOptionPane.INFORMATION_MESSAGE);
+
+        // Le joueur a validé les résultats, on ferme le jeu
         this.dispose();
     }
-
+    //endregion
 
 }

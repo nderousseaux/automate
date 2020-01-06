@@ -12,9 +12,18 @@ import java.awt.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 
+/**
+ * Fenêtre permettant de paramétrer la partie avant qu'elle commence
+ * Elle est définie par :
+ *  - Une HashMap contenant les différents paramètres récupérés
+ *
+ */
 public class FenetreParametres extends JFrame {
+    //region Attributs
     private HashMap _parametres = new HashMap();
+    //endregion
 
+    //region Constructeur
     /**
      * Constructeur de la classe FenetreParametres
      */
@@ -54,7 +63,7 @@ public class FenetreParametres extends JFrame {
         JSpinner jsLarg = new JSpinner(new SpinnerNumberModel(2, 2, null, 1));
         jpt.add(jsLarg);
 
-        // Algorithme d'évolution
+        // Méthode d'évolution de la grille
         jp.add(new JLabel("Méthode d'expension de la grille"));
         ArrayList<AlgorithmeExtension> listeAlgo = ControleurPartie.getInstance().getListeAlgorithmeExtension();
         String[] listeMeth = new String[listeAlgo.size()];
@@ -144,7 +153,12 @@ public class FenetreParametres extends JFrame {
         // Affichage de la fenêtre
         this.setVisible(true);
     }
+    //endregion
 
+    //region Methodes d'instance
+    /**
+     * Procédure vérifiant les paramètres récupérés
+     */
     public void traiterParametres() {
         if(_parametres.get("J1Nom").toString().length() == 0) {
             // Le nom du joueur 1 est vide
@@ -180,4 +194,5 @@ public class FenetreParametres extends JFrame {
             ControleurVue.getInstance().ouvrirPlacement();
         }
     }
+    //endregion
 }

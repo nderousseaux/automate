@@ -2,17 +2,24 @@ package view;
 
 import controler.ControleurPartie;
 import controler.ControleurVue;
-import model.Automate;
 
 import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
-import java.util.Scanner;
 
-
+/**
+ * Fenêtre permettant aux joueurs de placer leurs cellules initiales au lancement de la partie
+ * Elle est définie par :
+ *  - Un entier contenant l'index de l'automate qui doit placer sa cellule
+ *  - Un JLabel contenant le texte d'instruction pour indiquer qui doit placer sa cellule
+ */
 public class FenetrePlacement extends JFrame {
+    //region Attributs
     private int _automateCourant = 0;
     private JLabel _labelTour;
+    //endregion
+
+    // region Constructeur
     /**
      * Constructeur de la classe FenetreIntro
      */
@@ -68,15 +75,18 @@ public class FenetrePlacement extends JFrame {
         // Affichage de la fenêtre
         this.setVisible(true);
     }
+    //endregion
 
+    //region Methodes d'instance
+    /**
+     * Procédure qui gère le placement d'une cellule après que le joueur ait validé son choix
+     */
     public void placer(int x, int y) {
         try {
             ControleurPartie.getInstance().addCellule(x, y, ControleurPartie.getInstance().getListeDesAutomates().get(_automateCourant));
         } catch(IllegalArgumentException ex) {
             JOptionPane.showMessageDialog(this, "Cette case est déjà occupée !", "Erreur", JOptionPane.ERROR_MESSAGE);
             return;
-        } finally {
-            System.out.println(ControleurPartie.getInstance().stringGrille());
         }
         // La cellule a bien été ajoutée, on s'assure qu'on doit continuer et si oui on passe au tour de placement suivant
         if(ControleurPartie.getInstance().getGrille().getListeCellules().size() < ControleurPartie.getInstance().getNbCelluleVivante()*2) {
@@ -91,4 +101,5 @@ public class FenetrePlacement extends JFrame {
             ControleurVue.getInstance().ouvrirEvolution();
         }
     }
+    //endregion
 }

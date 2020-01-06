@@ -6,8 +6,11 @@ import javax.swing.*;
 import javax.swing.border.EmptyBorder;
 import java.awt.*;
 
-
+/**
+ * Fenêtre affichant un message d'introduction et le bouton pour jouer
+ */
 public class FenetreIntro extends JFrame {
+    //region Constructeur
     /**
      * Constructeur de la classe FenetreIntro
      */
@@ -45,4 +48,5 @@ public class FenetreIntro extends JFrame {
         // Affichage de la fenêtre
         this.setVisible(true);
     }
+    //endregion
 }
